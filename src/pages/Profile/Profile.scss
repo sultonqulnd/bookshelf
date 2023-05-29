@@ -1,0 +1,10 @@
+@use '../../scss/variables';
+@use '../../scss/animations';
+@use '../../scss/mixins';
+@use '../../scss/typography';
+@use '../../scss/global';
+
+.profile {
+  margin-top: 80px;
+  min-height: calc(100vh - 244px);
+}
