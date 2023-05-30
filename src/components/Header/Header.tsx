@@ -1,4 +1,3 @@
-import './Header.scss';
 import {
   Link as MuiLink,
   Button,

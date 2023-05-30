@@ -1,9 +1,8 @@
 import { Box, Container, Typography } from '@mui/material';
-import './NoPage.scss';
 
 const NoPage = () => {
   return (
-    <Container maxWidth='lg' className='nopage'>
+    <Container maxWidth='lg' sx={{ marginTop: '40px', minHeight: '100vh' }}>
       <Box>
         <Typography
           variant='h3'

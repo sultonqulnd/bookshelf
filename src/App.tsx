@@ -1,22 +1,30 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Footer, Header } from './components';
+import { Header } from './components';
 import { About, Books, Home, Profile, NoPage, Register } from './pages';
 
-import './App.scss';
+import './App.css';
 
 function App() {
+  const key = localStorage.getItem('key');
+  const secret = localStorage.getItem('secret');
+  const isSignedIn = !(!key || !secret);
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/books' element={<Books />} />
-        <Route path='/signup' element={<Register />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='*' element={<NoPage />} />
-      </Routes>
-      {/* <Footer /> */}
+      {!isSignedIn ? (
+        <Register />
+      ) : (
+        <>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/books' element={<Books />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/signup' element={<Register />} />
+            <Route path='*' element={<NoPage />} />
+          </Routes>
+        </>
+      )}
     </BrowserRouter>
   );
 }

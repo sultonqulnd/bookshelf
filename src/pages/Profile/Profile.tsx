@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'md5';
 import {
-  Box,
   Container,
   Paper,
   Table,
@@ -13,10 +12,10 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import './Profile.scss';
+import { UserType } from '../../types';
 
 const Profile = () => {
-  const [user, setUser] = useState({
+  const [user, setUser] = useState<UserType>({
     id: 0,
     name: '',
     email: '',
@@ -27,12 +26,14 @@ const Profile = () => {
   const key = localStorage.getItem('key');
   const secret = localStorage.getItem('secret');
   const sign = md5(`GET/myself${secret}`);
+
   const config = {
     headers: {
       Key: key,
       Sign: sign,
     },
   };
+
   const getUser = async () => {
     try {
       const response = await axios.get(
@@ -47,10 +48,11 @@ const Profile = () => {
 
   useEffect(() => {
     getUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <Container maxWidth='lg' className='profile'>
+    <Container maxWidth='lg' sx={{ marginTop: '40px', minHeight: '100vh' }}>
       <Typography variant='h4' sx={{ marginBottom: '30px' }}>
         Profile
       </Typography>

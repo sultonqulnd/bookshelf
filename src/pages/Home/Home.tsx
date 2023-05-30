@@ -1,9 +1,8 @@
 import { Box, Container, Typography } from '@mui/material';
-import './Home.scss';
 
 const Home = () => {
   return (
-    <Container maxWidth='lg' className='home'>
+    <Container maxWidth='lg' sx={{ marginTop: '40px', minHeight: '100vh' }}>
       <Box>
         <Typography variant='h4' sx={{ marginBottom: '20px' }}>
           Home

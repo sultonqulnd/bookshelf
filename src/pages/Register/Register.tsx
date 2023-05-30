@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Box, Button, Container, TextField, Typography } from '@mui/material';
-import './Register.scss';
 import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -43,6 +43,9 @@ const Register = () => {
         key: '',
         secret: '',
       });
+      if (!(!user.key || !user.secret)) {
+        <Navigate to='/' replace={true} />;
+      }
     } catch (err) {
       console.log(err);
     }
@@ -61,8 +64,13 @@ const Register = () => {
   return (
     <Container
       maxWidth='lg'
-      className='register'
-      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      sx={{
+        marginTop: '40px',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
     >
       <Typography variant='h4' sx={{ marginBottom: '20px' }}>
         Register
